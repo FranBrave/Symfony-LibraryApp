@@ -1,0 +1,26 @@
+ {% extends "books/basebooks.html.twig" %}
+
+  {% block contenido %} 
+  
+<h2>Listado de libros </h2>
+{% for message in app.flashes("success") %}
+<p>{{message}}</p>
+{% endfor %}
+    <div class="row row-cols-1 row-cols-md-2">
+        {% for book in books %}
+            <div class="col mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ book.cover }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">{{ book.writer }}</p>
+                        <a href="{{ path('getonebook', {'id': book.number }) }}" class="btn btn-primary">Más Info</a>
+                        {% if is_granted('ROLE_ADMIN') %} <a href="{{ path('editbook', {'id': book.number }) }}" class="btn btn-primary">Edit</a> {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %} <a href="{{path("removebook",{"id":book.id})}}" class="btn btn-danger">Borrar</a> {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+
+   {% endblock %}

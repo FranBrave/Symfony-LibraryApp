@@ -1,0 +1,25 @@
+
+{% extends 'books/basebooks.html.twig' %}
+                
+{% block contenido %}
+<div class="container">
+                <div class="row">
+                    <div class="col text-center"><h2>{{ book.title }} by {{ book.writer }}</h2></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img src="{{ book.cover }}">
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">{{ book.description }}</div>
+                        </div>
+                        <div class="row">
+                            <ul>
+                               {# DEBILIDADES #}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
